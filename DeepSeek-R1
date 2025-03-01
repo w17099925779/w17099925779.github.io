@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek-R1 - 深度求索人工智能</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background-color: #1a237e;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* 主内容区 */
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        /* 头部展示区 */
+        .hero {
+            background: linear-gradient(135deg, #1a237e, #303f9f);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* 特性展示 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: #1a237e;
+            margin-bottom: 1rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">DeepSeek-R1</div>
+            <div style="color: white;">探索人工智能的边界</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <h1>DeepSeek-R1 人工智能系统</h1>
+            <p>基于深度求索自主研发的AGI核心架构，提供智能语义理解与生成能力</p>
+        </section>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>核心技术</h3>
+                <p>• 千亿参数大语言模型<br>
+                   • 多模态融合架构<br>
+                   • 持续学习系统<br>
+                   • 知识推理引擎</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>产品特性</h3>
+                <p>• 智能语义理解<br>
+                   • 上下文感知对话<br>
+                   • 多语言支持<br>
+                   • 安全可靠架构</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>应用场景</h3>
+                <p>• 智能客服系统<br>
+                   • 知识管理系统<br>
+                   • 内容生成平台<br>
+                   • 数据分析引擎</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
