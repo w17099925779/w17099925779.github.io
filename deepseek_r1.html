@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeepSeek-R1 - 深度求索人工智能</title>
+    <title>DeepSeek-R1</title>
     <style>
         * {
             margin: 0;
@@ -14,6 +14,7 @@
 
         body {
             background-color: #f5f7fa;
+            height: 100vh;
         }
 
         /* 导航栏 */
@@ -40,55 +41,136 @@
             font-weight: bold;
         }
 
-        /* 主内容区 */
-        .container {
+        /* 聊天容器 */
+        .chat-container {
             max-width: 1200px;
             margin: 80px auto 0;
-            padding: 2rem;
+            height: calc(100vh - 160px);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
         }
 
-        /* 头部展示区 */
-        .hero {
-            background: linear-gradient(135deg, #1a237e, #303f9f);
-            color: white;
-            padding: 4rem 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* 特性展示 */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
+        /* 聊天记录区域 */
+        .chat-messages {
+            flex: 1;
             background: white;
-            padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
-        .feature-card h3 {
-            color: #1a237e;
-            margin-bottom: 1rem;
+        /* 消息气泡 */
+        .message {
+            margin: 15px 0;
+            max-width: 80%;
+            animation: fadeIn 0.3s ease-in;
         }
 
-        /* 响应式设计 */
+        .user-message {
+            margin-left: auto;
+            background: #1a237e;
+            color: white;
+            border-radius: 15px 15px 0 15px;
+        }
+
+        .ai-message {
+            background: #f0f2f5;
+            color: #333;
+            border-radius: 15px 15px 15px 0;
+        }
+
+        .message-content {
+            padding: 12px 18px;
+        }
+
+        /* 输入区域 */
+        .input-container {
+            display: flex;
+            gap: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .input-box {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            min-height: 50px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .send-button {
+            background: #1a237e;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .send-button:hover {
+            background: #303f9f;
+        }
+
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 加载动画 */
+        .typing-indicator {
+            display: inline-block;
+            padding: 12px 18px;
+            background: #f0f2f5;
+            border-radius: 15px;
+        }
+
+        .typing-dots {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            margin: 0 2px;
+            background: #666;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
         @media (max-width: 768px) {
-            .features {
-                grid-template-columns: 1fr;
+            .chat-container {
+                margin-top: 60px;
+                height: calc(100vh - 120px);
+                padding: 10px;
             }
             
-            .hero h1 {
-                font-size: 2rem;
+            .message {
+                max-width: 90%;
             }
         }
     </style>
@@ -97,41 +179,124 @@
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">DeepSeek-R1</div>
-            <div style="color: white;">探索人工智能的边界</div>
+            <div style="color: white;">智能对话系统 V1.0</div>
         </div>
     </nav>
 
-    <div class="container">
-        <section class="hero">
-            <h1>DeepSeek-R1 人工智能系统</h1>
-            <p>基于深度求索自主研发的AGI核心架构，提供智能语义理解与生成能力</p>
-        </section>
-
-        <div class="features">
-            <div class="feature-card">
-                <h3>核心技术</h3>
-                <p>• 千亿参数大语言模型<br>
-                   • 多模态融合架构<br>
-                   • 持续学习系统<br>
-                   • 知识推理引擎</p>
-            </div>
-
-            <div class="feature-card">
-                <h3>产品特性</h3>
-                <p>• 智能语义理解<br>
-                   • 上下文感知对话<br>
-                   • 多语言支持<br>
-                   • 安全可靠架构</p>
-            </div>
-
-            <div class="feature-card">
-                <h3>应用场景</h3>
-                <p>• 智能客服系统<br>
-                   • 知识管理系统<br>
-                   • 内容生成平台<br>
-                   • 数据分析引擎</p>
+    <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+            <div class="message ai-message">
+                <div class="message-content">
+                    您好！我是DeepSeek-R1人工智能助手，有什么可以帮您？
+                </div>
             </div>
         </div>
+
+        <div class="input-container">
+            <div 
+                class="input-box" 
+                contenteditable="true" 
+                id="inputBox"
+                placeholder="输入您的问题..."
+                role="textbox"
+            ></div>
+            <button class="send-button" id="sendButton">发送</button>
+        </div>
     </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const inputBox = document.getElementById('inputBox');
+        const sendButton = document.getElementById('sendButton');
+
+        // 消息处理
+        async function handleSend() {
+            const userInput = inputBox.innerText.trim();
+            if (!userInput) return;
+
+            // 添加用户消息
+            addMessage(userInput, 'user');
+            inputBox.innerText = '';
+            
+            // 显示加载状态
+            showTypingIndicator();
+
+            // 模拟AI回复（实际应替换为API调用）
+            setTimeout(() => {
+                removeTypingIndicator();
+                addMessage(getSimulatedResponse(userInput), 'ai');
+            }, 800);
+        }
+
+        // 添加消息
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.innerHTML = `
+                <div class="message-content">${text}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // 显示正在输入状态
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message ai-message';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-content">
+                    <div class="typing-indicator">
+                        <div class="typing-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // 移除输入状态
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) indicator.remove();
+        }
+
+        // 模拟回复逻辑
+        function getSimulatedResponse(input) {
+            const responses = {
+                "你好": "您好！有什么我可以帮助您的吗？",
+                "功能": "我可以提供信息查询、问题解答、数据分析、创意建议等多种服务。",
+                "时间": `当前时间是：${new Date().toLocaleTimeString()}`,
+                "默认": "这是一个模拟回复，实际使用应接入API服务。您的问题是：" + input
+            };
+            return responses[input] || responses["默认"];
+        }
+
+        // 事件监听
+        sendButton.addEventListener('click', handleSend);
+        inputBox.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSend();
+            }
+        });
+
+        // 输入框占位符
+        inputBox.addEventListener('focus', function() {
+            if (!this.innerText.trim()) {
+                this.setAttribute('data-placeholder', '输入您的问题...');
+            }
+        });
+        
+        inputBox.addEventListener('blur', function() {
+            if (!this.innerText.trim()) {
+                this.removeAttribute('data-placeholder');
+            }
+        });
+    </script>
 </body>
 </html>
